@@ -33,13 +33,13 @@ app.post("/", async (req, res) => {
 
   try {
     const response = await openai.createCompletion({
-      model: "text-device-003",
+      model: "text-davinci-003",
       prompt: `${message}`,
       max_tokens: 200,
       temperature: 0.5,
     });
 
-    res.json({ message: response.data.choices[0].value });
+    res.json({ message: response.data.choices[0].text });
   } catch (e) {
     console.log(e);
     res.send(e).status(400);
